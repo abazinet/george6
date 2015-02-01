@@ -1,7 +1,7 @@
 'use strict';
 
 var r = require('react');
-var view = require('./register').view;
+var view = require('./assessment').view;
 
 module.exports = {
   show: function() {

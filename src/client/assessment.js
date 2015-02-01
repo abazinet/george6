@@ -38,7 +38,7 @@ var view = React.createClass({
                 dom.div({className: 'form-horizontal'}, [
                   elem(input, {label: 'First Name', onChange: this.onChange.bind(this, 'firstname'), value: this.state.firstname, type: "text", placeholder: "first name"}),
                   elem(input, {label: 'Last Name', onChange: this.onChange.bind(this, 'lastname'), value: this.state.lastname, type: "text", placeholder: "last name"}),
-                  elem(button, {className:"btn btn-primary btn-block", bsStyle: "primary", onClick: this.handleSubmit, value: "Submit button"}, 'submit')
+                  elem(button, {className:"btn btn-primary btn-block", bsStyle: "primary", onClick: this.handleSubmit}, 'next')
                 ])
               )
             )
@@ -58,7 +58,7 @@ var view = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
 
-    http.post('api/register', {firstname: this.state.firstname, lastname: this.state.firstname})
+    http.post('api/vml/assessment', {firstname: this.state.firstname, lastname: this.state.firstname})
       .then(function() {
         this.setState({submitted: true});
       }.bind(this))
