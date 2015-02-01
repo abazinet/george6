@@ -5,6 +5,6 @@ var view = require('./register').view;
 
 module.exports = {
   show: function() {
-    r.render(view(), document.body);
+    r.render(view(), document.getElementById('evaluate-form'));
   }
 };
