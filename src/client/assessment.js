@@ -33,8 +33,8 @@ var view = React.createClass({
     }
     return (
       dom.div({className: 'row register-form '},
-        dom.div({className: 'col-md-4'}),
-        dom.div({className: 'col-md-4'},
+        dom.div({className: 'col-md-3'}),
+        dom.div({className: 'col-md-6'},
             dom.div({className: 'panel panel-default'},
               dom.div({className: 'panel-body'},
                 dom.div({className: 'form-horizontal'}, [
@@ -50,7 +50,7 @@ var view = React.createClass({
               )
             )
         ),
-        dom.div({className: 'col-md-4'})
+        dom.div({className: 'col-md-3'})
       )
     );
   },
