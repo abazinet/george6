@@ -36,9 +36,14 @@ var view = React.createClass({
             dom.div({className: 'panel panel-default'},
               dom.div({className: 'panel-body'},
                 dom.div({className: 'form-horizontal'}, [
-                  elem(input, {label: 'First Name', onChange: this.onChange.bind(this, 'firstname'), value: this.state.firstname, type: "text", placeholder: "first name"}),
-                  elem(input, {label: 'Last Name', onChange: this.onChange.bind(this, 'lastname'), value: this.state.lastname, type: "text", placeholder: "last name"}),
-                  elem(button, {className:"btn btn-primary btn-block", bsStyle: "primary", onClick: this.handleSubmit}, 'next')
+                  elem(input, {type: "text", labelClassName: 'col-md-3', wrapperClassName: 'col-md-9', label: 'First Name', onChange: this.onChange.bind(this, 'firstname'), value: this.state.firstname, placeholder: "first name"}),
+                  elem(input, {type: "text", labelClassName: 'col-md-3 ', wrapperClassName: 'col-md-9', label: 'Last Name', onChange: this.onChange.bind(this, 'lastname'), value: this.state.lastname, placeholder: "last name"}),
+                  dom.div({className: 'form-group'}, [
+                    dom.div({className: 'col-md-9'}),
+                    dom.div({className: 'col-md-3'}, [
+                      elem(button, {className:"btn btn-primary btn-block", bsStyle: "primary", onClick: this.handleSubmit}, 'next')
+                    ])
+                  ])
                 ])
               )
             )
