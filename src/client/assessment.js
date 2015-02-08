@@ -36,8 +36,8 @@ var view = React.createClass({
             dom.div({className: 'panel panel-default'},
               dom.div({className: 'panel-body'},
                 dom.div({className: 'form-horizontal'}, [
-                  elem(input, {type: "text", labelClassName: 'col-md-3', wrapperClassName: 'col-md-9', label: 'First Name', onChange: this.onChange.bind(this, 'firstname'), value: this.state.firstname, placeholder: "first name"}),
-                  elem(input, {type: "text", labelClassName: 'col-md-3 ', wrapperClassName: 'col-md-9', label: 'Last Name', onChange: this.onChange.bind(this, 'lastname'), value: this.state.lastname, placeholder: "last name"}),
+                  elem(input, {type: "text", labelClassName: 'col-md-3', wrapperClassName: 'col-md-9', label: 'First Name', onChange: this.handleChange, value: this.state.firstname, name: 'firstname', placeholder: "first name"}),
+                  elem(input, {type: "text", labelClassName: 'col-md-3 ', wrapperClassName: 'col-md-9', label: 'Last Name', onChange: this.handleChange, value: this.state.lastname, name: 'lastname', placeholder: "last name"}),
                   dom.div({className: 'form-group'}, [
                     dom.div({className: 'col-md-9'}),
                     dom.div({className: 'col-md-3'}, [
@@ -53,11 +53,10 @@ var view = React.createClass({
     );
   },
 
-  onChange: function(field, e) {
-    e.preventDefault();
+  handleChange: function(e) {
     var nextState = {};
-    nextState[field] = e.target.value;
-    this.setState(nextState)
+    nextState[e.target.name] = e.target.value;
+    this.setState(nextState);
   },
 
   handleSubmit: function(e) {
