@@ -23,11 +23,13 @@ var view = React.createClass({
   },
 
   render: function() {
+    var state = this.state;
+
     if(this.state.submitted) {
-      return (dom.div(null, 'THANK YOU ' + this.state.firstname));
+      return (dom.div(null, 'THANK YOU ' + state.firstname));
     }
     if(this.state.failed) {
-      return (dom.div(null, 'Something went wrong. ' + JSON.stringify(this.state.failed)));
+      return (dom.div(null, 'Something went wrong. ' + JSON.stringify(state.failed)));
     }
     return (
       dom.div({className: 'row register-form '},
@@ -36,8 +38,8 @@ var view = React.createClass({
             dom.div({className: 'panel panel-default'},
               dom.div({className: 'panel-body'},
                 dom.div({className: 'form-horizontal'}, [
-                  elem(input, {type: "text", labelClassName: 'col-md-3', wrapperClassName: 'col-md-9', label: 'First Name', onChange: this.handleChange, value: this.state.firstname, name: 'firstname', placeholder: "first name"}),
-                  elem(input, {type: "text", labelClassName: 'col-md-3 ', wrapperClassName: 'col-md-9', label: 'Last Name', onChange: this.handleChange, value: this.state.lastname, name: 'lastname', placeholder: "last name"}),
+                  elem(input, {type: "text", labelClassName: 'col-md-3', wrapperClassName: 'col-md-9', label: 'First Name', onChange: this.handleChange, value: state.firstname, name: 'firstname', placeholder: "first name"}),
+                  elem(input, {type: "text", labelClassName: 'col-md-3 ', wrapperClassName: 'col-md-9', label: 'Last Name', onChange: this.handleChange, value: state.lastname, name: 'lastname', placeholder: "last name"}),
                   dom.div({className: 'form-group'}, [
                     dom.div({className: 'col-md-9'}),
                     dom.div({className: 'col-md-3'}, [
@@ -59,10 +61,10 @@ var view = React.createClass({
     this.setState(nextState);
   },
 
-  handleSubmit: function(e) {
-    e.preventDefault();
+  handleSubmit: function() {
+    var state = this.state;
 
-    http.post('api/vml/assessment', {firstname: this.state.firstname, lastname: this.state.firstname})
+    http.post('api/vml/assessment', {firstname: state.firstname, lastname: state.lastname})
       .then(function() {
         this.setState({submitted: true});
       }.bind(this))
