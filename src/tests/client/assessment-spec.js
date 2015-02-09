@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var reactTest = require('react/lib/ReactTestUtils');
-var registerView = require('../../client/assessment');
+var registerView = require('../../client/assessment/index');
 
 describe('a register form', function() {
   var inputs;
