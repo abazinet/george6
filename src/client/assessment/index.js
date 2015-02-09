@@ -8,6 +8,8 @@ var Boostrap = require('react-bootstrap');
 var button = Boostrap.Button;
 
 var textInput = require('./text-input');
+var dateInput = require('./date-input');
+
 var http = require('./../http-async').create();
 
 var div = function(classes, children) {
@@ -51,6 +53,11 @@ var view = React.createClass({
                     this.handleChange, {
                       placeholder: 'last name',
                       label: 'Last Name'
+                    }),
+                  dateInput('datebirth',
+                    state.datebirth,
+                    this.handleChange, {
+                      label: 'Date of Birth'
                     }),
                   div('form-group', [
                     div('col-md-9'),
