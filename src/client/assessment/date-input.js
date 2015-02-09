@@ -12,7 +12,7 @@ function dateInput(name, value, onChange, options) {
     value: value,
     onChange: onChange,
     labelClassName: 'col-md-3',
-    wrapperClassName: 'col-md-9',
+    wrapperClassName: 'col-md-3',
     label: options.label}, [
       elem(datepicker, {
         onDayTouchTap: onChange
