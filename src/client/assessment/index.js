@@ -54,10 +54,10 @@ var view = React.createClass({
                       placeholder: 'last name',
                       label: 'Last Name'
                     }),
-                  dateInput('datebirth',
+                  dateInput('birthday',
                     state.datebirth,
                     this.handleChange, {
-                      label: 'Date of Birth'
+                      label: 'Birthday'
                     }),
                   div('form-group', [
                     div('col-md-9'),
