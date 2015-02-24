@@ -12,9 +12,9 @@ var dateInput = require('./date-input');
 
 var http = require('./../http-async').create();
 
-var div = function(classes, children) {
+function div(classes, children) {
   return dom.div({className: classes}, children);
-};
+}
 
 var view = React.createClass({
   getInitialState: function() {
@@ -54,9 +54,7 @@ var view = React.createClass({
                       placeholder: 'last name',
                       label: 'Last Name'
                     }),
-                  dateInput('birthday',
-                    state.datebirth,
-                    this.handleChange, {
+                  elem(dateInput, {
                       label: 'Birthday'
                     }),
                   div('form-group', [

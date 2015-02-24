@@ -10,44 +10,54 @@ var input = Bootstrap.Input;
 var dropdown = Bootstrap.DropdownButton;
 var menuItem = Bootstrap.MenuItem;
 
-var div = function(classes, children) {
+function div(classes, children) {
   return dom.div({className: classes}, children);
-};
+}
 
-function dateInput(name, value, onChange, options) {
+var view = React.createClass({
+  propTypes: {
+    label: React.PropTypes.node
+  },
 
-  return (
-    div('form-group', [
-      div('form-inline', [
-        dom.label({className: 'control-label col-md-3'}, [
-          dom.span(null, options.label)
-        ]),
-        div('col-md-9', [
-          div('row', [
-            div('col-xs-2', [
-              elem(dropdown, {title: 'Month'}, [
-                elem(menuItem, null, 'January'),
-                elem(menuItem, null, 'February'),
-                elem(menuItem, null, 'March'),
-                elem(menuItem, null, 'April'),
-                elem(menuItem, null, 'May'),
-                elem(menuItem, null, 'June'),
-                elem(menuItem, null, 'July'),
-                elem(menuItem, null, 'August'),
-                elem(menuItem, null, 'September'),
-                elem(menuItem, null, 'October'),
-                elem(menuItem, null, 'November'),
-                elem(menuItem, null, 'December')
-              ])
-            ]),
-            div('col-xs-2', [dom.input({className: 'form-control', maxLength: 2, placeholder: 'day'})]),
-            div('col-xs-2', [dom.input({className: 'form-control', maxLength: 4, placeholder: 'year'})])
+  getInitialState: function() {
+    return {
+      month: '',
+      day: '',
+      year: ''
+    }
+  },
+
+  render: function() {
+    return (
+      div('form-group', [
+        div('form-inline', [
+          dom.label({className: 'control-label col-md-3'}, [
+            dom.span(null, this.props.label)
+          ]),
+          div('col-md-9', [
+            div('row', [
+              div('col-xs-2', [
+                elem(dropdown, {name: 'month', value: '', onChange: this.handleChange, title: 'Month'}, [
+                  ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                    'September','October', 'November','December'].map(function(m) {
+                      return elem(menuItem, {onSelect: this.monthSelect}, m);
+                    }.bind(this))
+                ])
+              ]),
+              div('col-xs-2', [dom.input({className: 'form-control', maxLength: 2, placeholder: 'day'})]),
+              div('col-xs-2', [dom.input({className: 'form-control', maxLength: 4, placeholder: 'year'})])
+            ])
           ])
         ])
       ])
-    ])
-  );
-}
+    );
+  },
 
-module.exports = dateInput;
+  monthSelect: function(key, href, target) {
+    // TODO: ALEX:
+  }
+});
+
+
+module.exports = view;
 
